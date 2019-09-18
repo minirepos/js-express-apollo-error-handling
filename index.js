@@ -36,7 +36,7 @@ const resolvers = {
   },
 }
 
-const server = new ApolloServer({
+const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
   context: ({ req }) => ({ user: req.header('user') }),
@@ -44,6 +44,6 @@ const server = new ApolloServer({
 
 const app = express()
 
-server.applyMiddleware({ app })
+apolloServer.applyMiddleware({ app })
 
 app.listen(port, () => console.log(`Listening on port ${port}`))
